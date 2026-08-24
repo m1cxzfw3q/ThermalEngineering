@@ -2,6 +2,7 @@ package TEMod;
 
 import TEMLib.ModularWeapon.ModularWeaponEntity;
 import TEMLib.Utils;
+import TEMLib.special.TEReflect;
 import TEMLib.ui.TEMapInfoDialog;
 import TEMod.content.*;
 import TEMod.content.Kepler.*;
@@ -56,8 +57,10 @@ public class TECore extends Mod {
     );
 
     public TECore() {
-        LoadRenderer renderer = Reflect.get(Vars.platform.getClass().getSuperclass(), Vars.platform, "loader");
-        if (renderer != null) Reflect.set(renderer, "color", Color.valueOf("114c7f"));
+        try {
+            LoadRenderer renderer = Reflect.get(Vars.platform.getClass().getSuperclass(), Vars.platform, "loader");
+            if (renderer != null) TEReflect.setStaticFinalField(renderer.getClass(), "color", Color.valueOf("114c7f"));
+        } catch (Exception ignored) {}
         Events.on(EventType.ClientLoadEvent.class, _e -> {
             if (!OS.isAndroid && OS.javaVersionNumber < 17) {
                 Log.warn("[TEMod] " + Core.bundle.format("misc.temod-low-java-version", OS.javaVersion.split("\\.")[0]));
