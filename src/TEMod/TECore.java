@@ -57,7 +57,7 @@ public class TECore extends Mod {
 
     public TECore() {
         LoadRenderer renderer = Reflect.get(Vars.platform.getClass().getSuperclass(), Vars.platform, "loader");
-        Reflect.set(renderer, "color", Color.valueOf("114c7f"));
+        if (renderer != null) Reflect.set(renderer, "color", Color.valueOf("114c7f"));
         Events.on(EventType.ClientLoadEvent.class, _e -> {
             if (!OS.isAndroid && OS.javaVersionNumber < 17) {
                 Log.warn("[TEMod] " + Core.bundle.format("misc.temod-low-java-version", OS.javaVersion.split("\\.")[0]));
