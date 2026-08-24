@@ -50,7 +50,7 @@ public class KeplerPlanet {
             allowCampaignRules = true;
             ruleSetter = r -> setRule(this, rules -> {
                 rules.placeRangeCheck = false;
-                rules.showSpawns = true;
+                rules.hideSpawns = false;
                 rules.enemyCoreBuildRadius = 45f * 8f;
                 rules.solarMultiplier = 1.5f;
 
