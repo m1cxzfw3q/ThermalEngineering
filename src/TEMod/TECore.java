@@ -7,6 +7,7 @@ import TEMod.content.*;
 import TEMod.content.Kepler.*;
 import arc.Core;
 import arc.Events;
+import arc.graphics.Color;
 import arc.math.Mathf;
 import arc.scene.event.Touchable;
 import arc.scene.ui.ScrollPane;
@@ -22,6 +23,8 @@ import mindustry.entities.Units;
 import mindustry.game.EventType;
 import mindustry.gen.Groups;
 import mindustry.gen.Icon;
+import mindustry.graphics.LoadRenderer;
+import mindustry.graphics.Pal;
 import mindustry.io.SaveFileReader;
 import mindustry.io.SaveVersion;
 import mindustry.mod.Mod;
@@ -53,6 +56,10 @@ public class TECore extends Mod {
     );
 
     public TECore() {
+        Events.on(EventType.ClientCreateEvent.class, _e -> {
+            LoadRenderer renderer = Reflect.get(Vars.platform.getClass().getSuperclass(), Vars.platform, "loader");
+            Reflect.set(renderer, "color", Color.valueOf("114c7f"));
+        });
         Events.on(EventType.ClientLoadEvent.class, _e -> {
             if (!OS.isAndroid && OS.javaVersionNumber < 17) {
                 Log.warn("[TEMod] " + Core.bundle.format("misc.temod-low-java-version", OS.javaVersion.split("\\.")[0]));
