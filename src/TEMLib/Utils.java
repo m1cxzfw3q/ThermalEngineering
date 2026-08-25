@@ -458,4 +458,12 @@ public class Utils { // 那很实用了
             return null;
         }
     }
+
+    public static boolean isNanInfinite(float val) {
+        return Float.isNaN(val) || Float.isInfinite(val);
+    }
+
+    public static boolean inRange(float val, float min, float max) {
+        return val < max && val > min;
+    }
 }
