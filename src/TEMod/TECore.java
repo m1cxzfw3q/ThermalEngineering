@@ -63,7 +63,7 @@ public class TECore extends Mod {
             {
                 try{
                     TEReflect.setStaticFinalField(this.getClass(), "color", Color.valueOf("0e4a7f"));
-                    TEReflect.setStaticFinalField(this.getClass(), "orange", "[#" + Color.valueOf("0e4a7f") + "]");
+                    TEReflect.setStaticFinalField(this.getClass(), "orange", "[#0e4a7f]");
                 } catch (Exception ignored) {}
             }
             @Override
