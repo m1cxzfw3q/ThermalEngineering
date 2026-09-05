@@ -160,6 +160,7 @@ public class TECore extends Mod {
             }
         });
 
+        TESounds.load();
         TEItems.load();
         TEStatusEffects.load();
         TEModularWeapons.load();
