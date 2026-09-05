@@ -57,28 +57,12 @@ public class TECore extends Mod {
     );
 
     public TECore() {
-        Reflect.set(Vars.platform.getClass().getSuperclass(), Vars.platform, "loader", new LoadRenderer() {
-            final Color bac = Pal.accent;
-            // 1c95ff
-            {
-                try{
-                    TEReflect.setStaticFinalField(this.getClass(), "color", Color.valueOf("0e4a7f"));
-                    TEReflect.setStaticFinalField(this.getClass(), "orange", "[#0e4a7f]");
-                } catch (Exception ignored) {}
-            }
-            @Override
-            public void draw() {
-                Pal.accent = Color.valueOf("1C95FF");
-                super.draw();
-                Pal.accent = bac;
-            }
+        LoadRenderer loader = Reflect.get(Vars.platform.getClass().getSuperclass(), Vars.platform, "loader");
+        try{
+            TEReflect.setStaticFinalField(loader.getClass(), "color", Color.valueOf("0e4a7f"));
+            TEReflect.setStaticFinalField(loader.getClass(), "orange", "[#0e4a7f]");
+        } catch (Exception ignored) {}
 
-            @Override
-            public void dispose() {
-                super.dispose();
-                Pal.accent = bac;
-            }
-        });
         Events.on(EventType.ClientLoadEvent.class, _e -> {
             if (!OS.isAndroid && OS.javaVersionNumber < 17) {
                 Log.warn("[TEMod] " + Core.bundle.format("misc.temod-low-java-version", OS.javaVersion.split("\\.")[0]));
