@@ -1,5 +1,6 @@
 package TEMod.content;
 
+import TEMLib.type.TEItem;
 import arc.Core;
 import mindustry.content.Items;
 import mindustry.type.Item;
@@ -112,6 +113,10 @@ public class TEItems {
         }};
         ultimateEnergyStorageComponent = new Item("ultimate-energy-storage-component", Color.valueOf("D14C3A")) {{
             cost = 8f;
+        }};
+
+        new TEItem("test-item"){{
+            displayedSounds.addAll(TESounds.omg);
         }};
 
         isComplete(TEItems.class);

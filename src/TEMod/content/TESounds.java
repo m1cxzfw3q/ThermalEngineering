@@ -4,7 +4,7 @@ import arc.audio.Sound;
 import mindustry.Vars;
 
 public class TESounds {
-    public static Sound steelPipeDead, steelPipeAttack, portalCreate, dance, desLaser, desSpearCry;
+    public static Sound steelPipeDead, steelPipeAttack, portalCreate, dance, desLaser, desSpearCry, omg;
 
     public static void load() {
         steelPipeDead = Vars.tree.loadSound("steel-pipe-dead-sound");
@@ -13,5 +13,6 @@ public class TESounds {
         dance = Vars.tree.loadSound("dance");
         desLaser = Vars.tree.loadSound("des-laser");
         desSpearCry = Vars.tree.loadSound("des-spear-cry");
+        omg = Vars.tree.loadSound("omg");
     }
 }
